@@ -1,0 +1,7 @@
+<div class="item">
+  <p>{{ product.name }}</p>
+  <span class="salepill" *ngIf="product.isforSale || true">Sale</span>
+  <img [src]="'assets/img/'.concat(product.image)" [alt]="product.name" />
+  <p>{{ product.currency + ' ' + product.price }}</p>
+  <button class="add" (click)="addtoCart(product)">Add Item</button>
+</div>

@@ -1,7 +1,8 @@
 export class Product {
+  id: number;
   name: string;
   price: number;
   currency: string;
-  forSale: string;
+  isforSale = true;
   image: string;
 }

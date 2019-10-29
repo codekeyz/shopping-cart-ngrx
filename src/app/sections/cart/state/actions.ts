@@ -1,8 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { CartItem } from 'src/app/models/cartitem';
+import { Product } from 'src/app/models/product';
 
 export class CartActions {
-  static addToCart = createAction('[Cart] addToCart', props<CartItem>());
+  static addToCart = createAction('[Cart] addToCart', props<Product>());
 
   static removeFromCart = createAction(
     '[Cart] removeFromCart',

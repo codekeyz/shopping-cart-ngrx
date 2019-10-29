@@ -1,1 +1,22 @@
-<p>home works!</p>
+<main class="capsule">
+  <app-mast-head></app-mast-head>
+  <div class="contain">
+    <app-sidebar
+      [inputmax]="150"
+      [priceRange]="150"
+      (rangeChange)="rangeChanged($event)"
+    >
+      <app-switch
+        (ontoggled)="ontoggled($event)"
+        [isChecked]="($filter | async)?.showOnlySale || false"
+      ></app-switch>
+    </app-sidebar>
+    <div class="content" tag="section">
+      <!-- <app-sale-item
+        *ngFor="let item of productsObservable | async"
+        (cartAdd)="onaddtoCart($event)"
+        [item]="item"
+      ></app-sale-item> -->
+    </div>
+  </div>
+</main>

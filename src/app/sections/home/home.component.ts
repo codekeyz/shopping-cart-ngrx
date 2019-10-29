@@ -6,6 +6,8 @@ import { Store, select } from '@ngrx/store';
 import { AppState, selectProducts, selectFilter } from 'src/app/ngrx-store';
 import { HomeActions } from './state/actions';
 import { HomeState } from './state/store';
+import { Product } from 'src/app/models/product';
+import { CartActions } from '../cart/state/actions';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,7 @@ import { HomeState } from './state/store';
 })
 export class HomeComponent implements OnInit {
   $filter = this.store.pipe(select(selectFilter));
+  $products = this.store.pipe(select(selectProducts));
 
   constructor(private store: Store<AppState>) {}
 
@@ -27,5 +30,9 @@ export class HomeComponent implements OnInit {
 
   rangeChanged(range: number) {
     this.store.dispatch(HomeActions.filterProducts({ filter: { range } }));
+  }
+
+  onaddtoCart(product: Product) {
+    this.store.dispatch(CartActions.addToCart(product));
   }
 }

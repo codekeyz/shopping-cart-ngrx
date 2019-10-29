@@ -12,11 +12,11 @@
       ></app-switch>
     </app-sidebar>
     <div class="content" tag="section">
-      <!-- <app-sale-item
-        *ngFor="let item of productsObservable | async"
-        (cartAdd)="onaddtoCart($event)"
-        [item]="item"
-      ></app-sale-item> -->
+      <app-product-item
+        *ngFor="let item of $products | async"
+        (cartAdd)="addToCart($event)"
+        [product]="item"
+      ></app-product-item>
     </div>
   </div>
 </main>

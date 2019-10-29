@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from './ngrx-store';
-import { Observable } from 'rxjs';
-import { CartState } from './sections/cart/state/store';
+import { Store, select } from '@ngrx/store';
+import { AppState, selectCartTotal } from './ngrx-store';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +8,9 @@ import { CartState } from './sections/cart/state/store';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  $cartCount: Observable<CartState>;
+  $cartCount = this.store.pipe(select(selectCartTotal));
 
   constructor(private store: Store<AppState>) {}
 
-  ngOnInit() {
-    this.$cartCount = this.store.select('cartState');
-  }
+  ngOnInit() {}
 }
